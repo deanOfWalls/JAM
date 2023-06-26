@@ -1,12 +1,5 @@
 package java.com.jam.jobapplicationmanager.model;
-
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -38,17 +31,103 @@ public class JobApplication {
     private String contactLinkedin;
 
     @Column
-    private int responded;
+    private boolean responded; //can change this from private int to private boolean and Hibernate (the ORM used in Spring Boot) will default this map to a TINYINT(1) which is what is supported in MySQL
 
+    @Temporal(TemporalType.DATE) //allows you to specify the precision of the date or time value that Hibernate will use when communicating with the database
     @Column
     private Date dateInterview;
 
+    @Temporal(TemporalType.DATE)
     @Column
     private Date dateThanked;
 
-    //Constructors, getters, setters not added yet
+//getters and setters
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public String getCompanyName() {
+        return companyName;
+    }
 
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getCompanyUrl() {
+        return companyUrl;
+    }
+
+    public void setCompanyUrl(String companyUrl) {
+        this.companyUrl = companyUrl;
+    }
+
+    public String getJobPostingUrl() {
+        return jobPostingUrl;
+    }
+
+    public void setJobPostingUrl(String jobPostingUrl) {
+        this.jobPostingUrl = jobPostingUrl;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public String getContactLinkedin() {
+        return contactLinkedin;
+    }
+
+    public void setContactLinkedin(String contactLinkedin) {
+        this.contactLinkedin = contactLinkedin;
+    }
+
+    public boolean isResponded() {
+        return responded;
+    }
+
+    public void setResponded(boolean responded) {
+        this.responded = responded;
+    }
+
+    public Date getDateInterview() {
+        return dateInterview;
+    }
+
+    public void setDateInterview(Date dateInterview) {
+        this.dateInterview = dateInterview;
+    }
+
+    public Date getDateThanked() {
+        return dateThanked;
+    }
+
+    public void setDateThanked(Date dateThanked) {
+        this.dateThanked = dateThanked;
+    }
 }
