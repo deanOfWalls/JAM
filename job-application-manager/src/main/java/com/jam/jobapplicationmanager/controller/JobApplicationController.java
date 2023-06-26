@@ -9,5 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class JobApplicationController {
 
 
+//methods mapped to CRUD operations using annotations like @GetMapping, @PostMapping, etc.
+
+
 
 }
