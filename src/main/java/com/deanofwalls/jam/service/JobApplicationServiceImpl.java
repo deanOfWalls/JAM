@@ -1,9 +1,22 @@
 package com.deanofwalls.jam.service;
 
-public class JobApplicationServiceImpl {
+import com.deanofwalls.jam.repository.JobApplicationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+
+@Service
+public class JobApplicationServiceImpl implements IJobApplicationService {
+    private final JobApplicationRepository jobApplicationRepository;
+
+    @Autowired
+    public JobApplicationServiceImpl(JobApplicationRepository jobApplicationRepository){
+        this.jobApplicationRepository = jobApplicationRepository;
+    }
+
 
     public String helloWorld() {
-        String hello =  "Hello world";
+        String hello = "Hello world";
         return hello;
     }
 
