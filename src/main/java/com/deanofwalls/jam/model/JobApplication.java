@@ -1,16 +1,16 @@
 package com.deanofwalls.jam.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
+@Table(name = "jam_db")
 public class JobApplication {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //generates auto incremented primary key value for id field
     private long id;
     private String companyName;
     private String jobTitle;
@@ -19,16 +19,16 @@ public class JobApplication {
     private String contactName;
     private String contactEmail;
     private String contactLinkedin;
-    private Date dateContacted;
+    private LocalDate dateContacted;
     private Boolean replied;
-    private Date interviewDate;
-    private Date thankedDate;
+    private LocalDate interviewDate;
+    private LocalDate thankedDate;
 
     public JobApplication() {
     }
-        public JobApplication(Long id, String firstName, String lastName, Date birthdate){
 
-        }
+    public JobApplication(long id, String companyName, String jobTitle, String companyURL, String jobURL, String contactName, String contactEmail, String contactLinkedin, LocalDate dateContacted, Boolean replied, LocalDate interviewDate, LocalDate thankedDate) {
+    }
 
     public long getId() {
         return id;
@@ -94,11 +94,11 @@ public class JobApplication {
         this.contactLinkedin = contactLinkedin;
     }
 
-    public Date getDateContacted() {
+    public LocalDate getDateContacted() {
         return dateContacted;
     }
 
-    public void setDateContacted(Date dateContacted) {
+    public void setDateContacted(LocalDate dateContacted) {
         this.dateContacted = dateContacted;
     }
 
@@ -110,19 +110,19 @@ public class JobApplication {
         this.replied = replied;
     }
 
-    public Date getInterviewDate() {
+    public LocalDate getInterviewDate() {
         return interviewDate;
     }
 
-    public void setInterviewDate(Date interviewDate) {
+    public void setInterviewDate(LocalDate interviewDate) {
         this.interviewDate = interviewDate;
     }
 
-    public Date getThankedDate() {
+    public LocalDate getThankedDate() {
         return thankedDate;
     }
 
-    public void setThankedDate(Date thankedDate) {
+    public void setThankedDate(LocalDate thankedDate) {
         this.thankedDate = thankedDate;
     }
 }

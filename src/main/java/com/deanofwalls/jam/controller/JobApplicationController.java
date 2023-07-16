@@ -2,34 +2,40 @@ package com.deanofwalls.jam.controller;
 
 import com.deanofwalls.jam.service.JobApplicationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class JobApplicationController {
-
-
     @Autowired
-    JobApplicationServiceImpl jobAppServiceImp = new JobApplicationServiceImpl();
+    private final JobApplicationServiceImpl jobAppServiceImp; // Initialize but not assign the JobApplicationServiceImpl instance
 
-    @RequestMapping("/hello")
-    private String helloWorld() {
-        return jobAppServiceImp.helloWorld();
+    public JobApplicationController(JobApplicationServiceImpl jobApplicationServiceImpl) {
+        this.jobAppServiceImp = jobApplicationServiceImpl;
     }
 
-    @RequestMapping("/bye")
-    private String goodbyeWorld() {
-        return jobAppServiceImp.goodbyeWorld();
-    }
+//    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+//    private String helloWorld() {
+//        // Handles a GET request to "/hello"
+//        // Calls the helloWorld() method of jobAppServiceImp instance variable (Service class)
+//        // and returns the result as a response
+//        return jobAppServiceImp.helloWorld();
+//    }
+//
+//    @RequestMapping(value = "/bye", method = RequestMethod.GET)
+//    private String goodbyeWorld() {
+//        // Handles a GET request to "/bye"
+//        // Calls the goodbyeWorld() method of jobAppServiceImp instance variable (Service class)
+//        // and returns the result as a response
+//        return jobAppServiceImp.goodbyeWorld();
+//    }
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
+    @PatchMapping(value ="/{id}}")
+    //using /{id} for the endpoint will let me specify which row i want to perform operations on. also using @PutMapping instead of @RequestMapping
     private String welcome(@RequestBody String name) {
+        // Handles a POST request to "/welcome"
+        // Expects a request body containing a string value (name)
+        // Calls the welcome(String name) method of jobAppServiceImp instance variable (Service class)
+        // passing the name parameter, and returns the result as a response
         return jobAppServiceImp.welcome(name);
     }
 }
-
-// GET /hello-world/ and recieve a "Hello World" payload with a response of 200 OK
-// The GET /hello-world/ should call a helloWorld() function.
-// Your app should call your Controller and Service classes.
