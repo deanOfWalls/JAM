@@ -9,7 +9,8 @@ import java.util.Date;
 @Table(name = "jam_db")
 public class JobApplication {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Generates auto-incremented primary key value for the 'id' field
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // Generates auto-incremented primary key value for the 'id' field
     private long id;
     private String companyName; // Stores the name of the company
     private String jobTitle; // Stores the job title
