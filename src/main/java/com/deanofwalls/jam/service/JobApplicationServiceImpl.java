@@ -1,9 +1,12 @@
 package com.deanofwalls.jam.service;
 
+import com.deanofwalls.jam.model.JobApplication;
 import com.deanofwalls.jam.repository.JobApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class JobApplicationServiceImpl{
@@ -34,4 +37,23 @@ public class JobApplicationServiceImpl{
         String welcome = "Welcome, " + name;
         return welcome;
     }
+
+    public String updateCompanyName(Long id, String companyName) {
+        int updatedRows = jobApplicationRepository.updateFields(id, companyName);
+        if(updatedRows > 0) {
+            return "Company name updated successfully";
+        } else {
+            return "Update failed: No such company exists with given ID";
+        }
+    }
+
+    public String getCompanyName(Long id) {
+        Optional<JobApplication> jobApplicationOptional = jobApplicationRepository.findById(id);
+        return jobApplicationOptional.map(JobApplication::getCompanyName).orElse("Company not found");
+    }
+
 }
+
+
+
+

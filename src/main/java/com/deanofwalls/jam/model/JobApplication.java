@@ -1,6 +1,5 @@
 package com.deanofwalls.jam.model;
 
-
 import javax.persistence.*;
 
 import java.time.LocalDate;
@@ -10,26 +9,41 @@ import java.util.Date;
 @Table(name = "jam_db")
 public class JobApplication {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //generates auto incremented primary key value for id field
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Generates auto-incremented primary key value for the 'id' field
     private long id;
-    private String companyName;
-    private String jobTitle;
-    private String companyURL;
-    private String jobURL;
-    private String contactName;
-    private String contactEmail;
-    private String contactLinkedin;
-    private LocalDate dateContacted;
-    private Boolean replied;
-    private LocalDate interviewDate;
-    private LocalDate thankedDate;
+    private String companyName; // Stores the name of the company
+    private String jobTitle; // Stores the job title
+    private String companyURL; // Stores the URL of the company's website
+    private String jobURL; // Stores the URL of the job posting
+    private String contactName; // Stores the name of the contact person
+    private String contactEmail; // Stores the email address of the contact person
+    private String contactLinkedin; // Stores the LinkedIn profile URL of the contact person
+    private LocalDate dateContacted; // Stores the date when the contact was made
+    private Boolean replied; // Indicates whether a reply has been received (true/false)
+    private LocalDate interviewDate; // Stores the date of the interview
+    private LocalDate thankedDate; // Stores the date when a thank-you note was sent
 
     public JobApplication() {
+        // Default constructor
     }
 
     public JobApplication(long id, String companyName, String jobTitle, String companyURL, String jobURL, String contactName, String contactEmail, String contactLinkedin, LocalDate dateContacted, Boolean replied, LocalDate interviewDate, LocalDate thankedDate) {
+        // Parameterized constructor for setting all the fields
+        this.id = id;
+        this.companyName = companyName;
+        this.jobTitle = jobTitle;
+        this.companyURL = companyURL;
+        this.jobURL = jobURL;
+        this.contactName = contactName;
+        this.contactEmail = contactEmail;
+        this.contactLinkedin = contactLinkedin;
+        this.dateContacted = dateContacted;
+        this.replied = replied;
+        this.interviewDate = interviewDate;
+        this.thankedDate = thankedDate;
     }
 
+    // Getter and setter methods for each field
     public long getId() {
         return id;
     }
